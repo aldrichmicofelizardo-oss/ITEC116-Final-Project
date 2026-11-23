@@ -1,132 +1,221 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# HR Management System API
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## ITEC116 Final Project
 
-## Description
+**Developer:** Aldrich Mico Felizardo
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Project Description
 
-## Project setup
+The HR Management System API is a backend application designed to help Human Resources staff manage recruitment activities. It allows authorized users to manage applicants, job positions, job applications, HR staff, and departments through RESTful API endpoints.
+
+The system uses JWT authentication, password hashing, role-based access control, and input validation to help protect information and restrict administrative operations.
+
+This project focuses on backend development and does not include a frontend interface.
+
+## Technologies Used
+
+- NestJS and TypeScript
+- Node.js
+- MySQL
+- TypeORM
+- JSON Web Tokens (JWT)
+- bcrypt
+- class-validator and class-transformer
+- Git and GitHub
+- Postman for API testing
+
+## Main Features
+
+1. User registration and login
+2. JWT-based authentication
+3. Admin-protected API endpoints
+4. Applicant management
+5. Job position management
+6. Job application management
+7. Department management
+8. HR staff management
+9. MySQL database integration
+10. Input validation and error handling
+
+## API Endpoints
+
+The following endpoints are implemented in the backend.
+
+### Authentication
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/auth/register` | Register a user |
+| POST | `/auth/login` | Log in and receive a JWT |
+
+### Applicants
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/applicants` | Retrieve all applicants |
+| GET | `/applicants/:id` | Retrieve an applicant |
+| POST | `/applicants` | Create an applicant |
+| PATCH | `/applicants/:id` | Update an applicant |
+| DELETE | `/applicants/:id` | Delete an applicant |
+
+### Job Positions
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/jobs` | Retrieve all job positions |
+| GET | `/jobs/:id` | Retrieve a job position |
+| POST | `/jobs` | Create a job position |
+| PATCH | `/jobs/:id` | Update a job position |
+| DELETE | `/jobs/:id` | Delete a job position |
+
+### Job Applications
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/job-applications` | Retrieve all applications |
+| GET | `/job-applications/:id` | Retrieve an application |
+| POST | `/job-applications` | Submit an application record |
+| PATCH | `/job-applications/:id` | Update an application |
+| DELETE | `/job-applications/:id` | Delete an application |
+
+### Departments
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/departments` | Retrieve all departments |
+| GET | `/departments/:id` | Retrieve a department |
+| POST | `/departments` | Create a department |
+| PATCH | `/departments/:id` | Update a department |
+| DELETE | `/departments/:id` | Delete a department |
+
+### HR Staff
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/hr-staff` | Retrieve all HR staff |
+| GET | `/hr-staff/:id` | Retrieve an HR staff member |
+| POST | `/hr-staff` | Create an HR staff record |
+| PATCH | `/hr-staff/:id` | Update an HR staff record |
+| DELETE | `/hr-staff/:id` | Delete an HR staff record |
+
+**Total:** 27 API endpoints, excluding the default root route.
+
+**Note:** The current endpoint paths are listed above. The planned `/api/v1` prefix, `/job-positions` naming, and applicant PUT endpoint still need to be aligned with the original API design.
+
+## Database
+
+Database name: `itec116_hr_management`
+
+The system uses six MySQL tables:
+
+1. `users`
+2. `applicants`
+3. `jobs`
+4. `job_applications`
+5. `departments`
+6. `hr_staff`
+
+The `job_applications` table references applicants and jobs, while `hr_staff` references departments.
+
+The SQL database export is provided in `database.sql`.
+
+## Installation and Setup
+
+### 1. Requirements
+
+Install the following:
+
+- Node.js and npm
+- MySQL Server
+- MySQL Workbench (optional)
+- Visual Studio Code (optional)
+
+### 2. Install dependencies
+
+Open a terminal in the project folder and run:
 
 ```bash
-$ npm install
+npm install
 ```
 
-## Compile and run the project
+On Windows PowerShell, use `npm.cmd install` if script execution is restricted.
+
+### 3. Import the database
+
+Create the MySQL database named `itec116_hr_management` and import the included `database.sql` file using MySQL Workbench or the MySQL command-line tools.
+
+### 4. Configure environment variables
+
+Create a `.env` file in the project root and enter the database and JWT settings required by `src/app.module.ts` and the authentication module.
+
+Use the same environment variable names expected by the application. Do not upload actual database passwords or JWT secrets to GitHub.
+
+### 5. Run the application
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run start:dev
 ```
 
-## Run tests
+For PowerShell:
 
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```powershell
+npm.cmd run start:dev
 ```
 
-## Deployment
+The API runs locally at:
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+`http://localhost:3000`
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Authentication and Authorization
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+Users authenticate through `/auth/login` to receive a JWT access token.
+
+Protected endpoints require the following HTTP header:
+
+```text
+Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Administrative operations are restricted using JWT authentication and role-based authorization guards.
 
-## Observability
+Passwords are hashed using bcrypt instead of being stored as plain text.
 
-In production applications, observability is essential for understanding how your system behaves, detecting issues early, and maintaining reliable performance.
+## API Testing
 
-[NestJS Observe](https://observe.nestjs.com) automatically instruments your NestJS application, giving you deep visibility into your system with minimal setup:
+The API can be tested using Postman or PowerShell.
 
-- **Distributed tracing:** Follow requests across services and understand how they flow through your system.
-- **Waterfall analysis:** Visualize request execution and identify slow operations, bottlenecks, and unexpected delays.
-- **Performance analysis:** Analyze application performance in real time and quickly pinpoint areas that need optimization.
-- **Metrics:** Track key application and infrastructure metrics to understand system health and performance trends.
-- **Logging:** Centralize and correlate logs with traces and other telemetry to make debugging easier.
-- **Error tracking:** Detect errors quickly and investigate their root causes with the surrounding context.
-- **SLA monitoring:** Track service-level objectives and identify when your application is approaching or exceeding defined thresholds.
-- **Alarms and alerts:** Set up alerts for critical errors, performance degradation, SLA violations, and other anomalies so your team can react quickly.
+Recommended tests include:
 
-To add it to this project, run this and approve the code it prints at [observe.nestjs.com/link](https://observe.nestjs.com/link) - signing up for free if you have no account:
+- Successful and unsuccessful login
+- Requests without authentication
+- Requests without admin permission
+- Create, read, update, and delete operations
+- Invalid request bodies
+- Requests for records that do not exist
+- Database relationship checks
 
-```bash
-$ npx @nestjs/observe link
+## Project Structure
+
+```text
+src/
+  applicants/
+  auth/
+  departments/
+  hr-staff/
+  job-applications/
+  jobs/
+  app.module.ts
+  main.ts
+
+database.sql
+README.md
 ```
 
-It installs `@nestjs/observe`, wires it into `AppModule` and `main.ts`, and writes the app key and secret into `.env`, which every `nest start` script (`start`, `start:dev`, `start:debug`) then loads. In production, set `OBSERVE_APP_KEY` and `OBSERVE_APP_SECRET` in the environment instead.
+## Project Status
 
-Or do it by hand:
+The backend CRUD modules, authentication, and database integration have been implemented. Final endpoint alignment, verification, Postman collection, and submission documentation are being completed.
 
-```bash
-$ npm install @nestjs/observe
-```
+## Academic Purpose
 
-Then follow the [setup guide](https://docs.nestjs.com/observability/sdk) - it takes a single import and an app key.
-
-The free plan needs no payment details and covers 300,000 events a month. You can also browse the [live demo](https://www.observe-demo.nestjs.com/dashboard) first - the whole dashboard over a busy service's data, with nothing to install.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Auto-instrument your application with [NestJS Observe](https://observe.nestjs.com). Distributed tracing, metrics, and logging made easy. Error tracking and performance monitoring for your NestJS applications.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project was developed as an individual final project for ITEC116 to demonstrate REST API development, authentication, database integration, and backend application design.
