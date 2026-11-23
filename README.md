@@ -40,7 +40,69 @@ This project focuses on backend development and does not include a frontend inte
 
 ## API Endpoints
 
-The following endpoints are implemented in the backend.
+
+## API Endpoints
+
+Base URL: `http://localhost:3000/api/v1`
+
+### Authentication
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/auth/register` | Register a user |
+| POST | `/auth/login` | Log in and receive a JWT token |
+
+### Applicants
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/applicants` | Get all applicants |
+| GET | `/applicants/:id` | Get an applicant by ID |
+| POST | `/applicants` | Create an applicant |
+| PATCH | `/applicants/:id` | Partially update an applicant |
+| PUT | `/applicants/:id` | Update an applicant using a full DTO |
+| DELETE | `/applicants/:id` | Delete an applicant |
+
+### Job Positions
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/job-positions` | Get all job positions |
+| GET | `/job-positions/:id` | Get a job position by ID |
+| POST | `/job-positions` | Create a job position |
+| PATCH | `/job-positions/:id` | Update a job position |
+| DELETE | `/job-positions/:id` | Delete a job position |
+
+### Job Applications
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/job-applications` | Get all job applications |
+| GET | `/job-applications/:id` | Get an application by ID |
+| POST | `/job-applications` | Submit a job application |
+| PATCH | `/job-applications/:id` | Update application status |
+| DELETE | `/job-applications/:id` | Delete a job application |
+
+### Departments
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/departments` | Get all departments |
+| GET | `/departments/:id` | Get a department by ID |
+| POST | `/departments` | Create a department |
+| PATCH | `/departments/:id` | Update a department |
+| DELETE | `/departments/:id` | Delete a department |
+
+### HR Staff
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/hr-staff` | Get all HR staff |
+| GET | `/hr-staff/:id` | Get an HR staff member by ID |
+| POST | `/hr-staff` | Create an HR staff member |
+| PATCH | `/hr-staff/:id` | Update an HR staff member |
+| DELETE | `/hr-staff/:id` | Delete an HR staff member |
+
+### Authentication and Authorization
+All CRUD endpoints require a valid JWT bearer token.
+
+- Applicants, Job Applications, and HR Staff endpoints require the `admin` role.
+- Job Positions and Departments allow authenticated users to read records, but only administrators can create, update, or delete them.
+
 
 ### Authentication
 
